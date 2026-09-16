@@ -43,6 +43,7 @@ export default function CountryDetails({ country, countries, onBack, onSelectCou
             </div>
 
             <div>
+              <p><strong>Top Level Domain:</strong> {country.tlds?.join(', ') || 'Not listed'}</p>
               <p>
                 <strong>Currencies:</strong>{' '}
                 {country.currencies?.map((currency) => currency.name).join(', ') || 'Not listed'}
