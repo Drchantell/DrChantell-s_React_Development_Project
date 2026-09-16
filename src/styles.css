@@ -83,7 +83,9 @@ h1 {
 
 .theme-button,
 .clear-button,
-.map-link {
+.details-button,
+.back-button,
+.border-button {
   border: 2px solid var(--black);
   border-radius: 10px;
   background: var(--black);
@@ -91,13 +93,15 @@ h1 {
   padding: 12px 16px;
   font-weight: 700;
   cursor: pointer;
-  text-decoration: none;
 }
 
 .theme-button:hover,
 .clear-button:hover,
-.map-link:hover {
+.details-button:hover,
+.back-button:hover,
+.border-button:hover {
   background: var(--dark-pink);
+  color: var(--white);
 }
 
 .intro {
@@ -133,10 +137,15 @@ h1 {
 }
 
 .clear-button,
-.map-link {
-  align-self: end;
+.details-button,
+.back-button,
+.border-button {
   background: var(--hot-pink);
   color: var(--black);
+}
+
+.clear-button {
+  align-self: end;
 }
 
 .results-count {
@@ -181,10 +190,8 @@ h1 {
   margin: 8px 0;
 }
 
-.map-link {
-  display: inline-block;
+.details-button {
   margin-top: 10px;
-  padding: 8px 12px;
 }
 
 .status-message {
@@ -196,9 +203,76 @@ h1 {
   background: var(--card-background);
 }
 
+.details-page {
+  margin-top: 36px;
+}
+
+.back-button {
+  margin-bottom: 28px;
+}
+
+.details-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 1fr) 1.2fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.details-flag {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border: 3px solid var(--black);
+  border-radius: 14px;
+  box-shadow: 7px 7px 0 var(--hot-pink);
+}
+
+.details-content {
+  padding: 24px;
+  border: 2px solid var(--black);
+  border-radius: 14px;
+  background: var(--card-background);
+}
+
+.details-content h2 {
+  margin-top: 0;
+  color: var(--dark-pink);
+  font-size: 2rem;
+}
+
+.details-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.details-columns p {
+  line-height: 1.6;
+}
+
+.border-section {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 2px solid var(--border);
+}
+
+.border-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.border-button {
+  padding: 9px 12px;
+}
+
 @media (max-width: 950px) {
   .country-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .details-layout {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -219,6 +293,11 @@ h1 {
   .country-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .details-columns {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -226,7 +305,12 @@ h1 {
     grid-template-columns: 1fr;
   }
 
-  .theme-button {
+  .theme-button,
+  .back-button {
     width: 100%;
+  }
+
+  .details-content {
+    padding: 18px;
   }
 }
