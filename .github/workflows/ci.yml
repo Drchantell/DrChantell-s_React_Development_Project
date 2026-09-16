@@ -1,0 +1,30 @@
+name: Check React Project
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check-project:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get my project files
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install project packages
+        run: npm ci
+
+      - name: Check my code
+        run: npm run lint
+
+      - name: Build my project
+        run: npm run build
