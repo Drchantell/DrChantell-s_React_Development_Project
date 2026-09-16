@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import type { Country } from '../types/Country'
 
 const API_URL = import.meta.env.DEV
-  ? '/api/countries?response_fields=names.common,names.official,names.native,codes.alpha_2,codes.alpha_3,capitals,region,subregion,population,borders,currencies,languages,flag.url_png,flag.url_svg,flag.description&limit=100'
-  : 'https://api.restcountries.com/countries/v5?response_fields=names.common,names.official,names.native,codes.alpha_2,codes.alpha_3,capitals,region,subregion,population,borders,currencies,languages,flag.url_png,flag.url_svg,flag.description&limit=100'
+  ? '/api/countries?response_fields=names.common,names.official,names.native,codes.alpha_2,codes.alpha_3,capitals,region,subregion,population,borders,tlds,currencies,languages,flag.url_png,flag.url_svg,flag.description&limit=100'
+  : 'https://api.restcountries.com/countries/v5?response_fields=names.common,names.official,names.native,codes.alpha_2,codes.alpha_3,capitals,region,subregion,population,borders,tlds,currencies,languages,flag.url_png,flag.url_svg,flag.description&limit=100'
 
 type ApiCountry = {
   names: {
@@ -17,6 +17,7 @@ type ApiCountry = {
   subregion?: string
   population: number
   borders?: string[]
+  tlds?: string[]
   currencies?: { code: string; name: string; symbol?: string }[]
   languages?: { name: string; bcp47?: string }[]
   flag?: { url_png?: string; url_svg?: string; description?: string }
@@ -75,6 +76,7 @@ async function fetchCountries(key: string, signal: AbortSignal) {
         subregion: country.subregion,
         population: country.population,
         borders: country.borders,
+        tlds: country.tlds,
         currencies: country.currencies,
         languages: country.languages,
         flags: {
