@@ -10,6 +10,7 @@ export type Country = {
   subregion?: string
   population: number
   borders?: string[]
+  tlds?: string[]
   currencies?: { code: string; name: string; symbol?: string }[]
   languages?: { name: string; bcp47?: string }[]
   flags: { png: string; svg: string; alt?: string }
